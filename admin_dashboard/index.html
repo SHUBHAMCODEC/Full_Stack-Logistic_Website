@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Admin Dashboard — Loadify</title>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="admin-header">
+    <div class="logo">Loadify</div>
+    <div class="header-actions">
+      <button id="refreshBtn" class="btn small">Refresh</button>
+      <button id="logoutBtn" class="btn small outline" style="border-color: aliceblue;">Logout</button>
+    </div>
+  </header>
+
+  <main class="admin-main">
+    <section class="top-cards">
+      <div class="card">
+        <div class="card-title">Visitors</div>
+        <div class="card-value" id="visitorsCount">—</div>
+      </div>
+      <div class="card">
+        <div class="card-title">Contact Forms</div>
+        <div class="card-value" id="contactsCount">—</div>
+      </div>
+      <div class="card">
+        <div class="card-title">Service Forms</div>
+        <div class="card-value" id="servicesCount">—</div>
+      </div>
+    </section>
+
+    <section class="chart-section" style="width: 100%; max-width: auto; height: 650px; margin:0 auto;">
+      <div class="chart-header">
+        <h3>Pageviews</h3>
+        <div class="controls">
+          <select id="rangeSelect">
+            <option value="current">Current Month (by day)</option>
+            <option value="last">Last Month (by day)</option>
+          </select>
+        </div>
+      </div>
+      <canvas id="pageviewChart" height="120" style="width: 100% !important;  max-height: 90%;"></canvas>
+    </section>
+
+    <section class="tables">
+      <div class="table-card">
+        <h3>Contacts</h3>
+        <div id="contactsContainer"></div>
+      </div>
+
+      <div class="table-card">
+        <h3>Services</h3>
+        <div id="servicesContainer"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body { background-color: #e0f7fa; color: #004d40; overflow-x: hidden; }
+
+    header {
+      width: 100%; position: fixed; top: 0; left: 0; z-index: 1000;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 70px;
+      background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .logo { font-size: 1.8rem; font-weight: 700; color: #006064; letter-spacing: 1px; }
+    nav { display: flex; gap: 30px; }
+    nav a { text-decoration: none; color: #004d40; font-weight: 500; transition: color 0.3s ease; }
+    nav a:hover { color: #006064; }
+
+    .hamburger { display: none; flex-direction: column; cursor: pointer; }
+    .hamburger span { height: 3px; width: 25px; background: #004d40; margin: 4px 0; transition: all 0.3s; }
+
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      nav { position: absolute; top: 70px; right: 0; width: 250px; height: 100vh;
+        flex-direction: column; align-items: center; justify-content: start; padding-top: 50px;
+        background: rgba(255,255,255,0.95); transform: translateX(100%); transition: transform 0.4s ease; }
+      nav.active { transform: translateX(0); }
+      nav a { font-size: 1.1rem; margin: 15px 0; }
+    }
+    /* Bright full-width image section between navbar and hero */
+.hero-image-banner {
+  width: 100%;
+  height: 100vh; /* adjust height as you like (60vh–80vh looks good) */
+  background: url('../image/fleet-bg.jpeg') center/cover no-repeat;
+  margin-top: 90px; /* space for navbar */
+  border-bottom: px solid #e0f7fa; /* subtle separation line for polish */
+}
+
+/* Make sure image scales well on all screens */
+@media (max-width: 768px) {
+  .hero-image-banner {
+    height: 50vh;
+  }
+}
+
+
+    .hero { height: 90vh; background: linear-gradient(135deg, #b2ebf2, #ffffff);
+      display: flex; align-items: center; justify-content: center; flex-direction: column;
+      text-align: center; padding: 0 20px; margin-top: 90px; }
+    .hero h1 { font-size: 3rem; color: #006064; margin-bottom: 20px; }
+    .hero p { font-size: 1.2rem; color: #004d40; max-width: 800px; line-height: 1.6; }
+
+    .stats { display: flex; flex-wrap: wrap; justify-content: center; margin-top: 50px; gap: 30px; }
+    .stat { background: #ffffff; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); padding: 25px 40px; text-align: center; transition: transform 0.3s ease; }
+    .stat:hover { transform: translateY(-5px); }
+    .stat h3 { font-size: 2rem; color: #006064; }
+    .stat p { color: #004d40; margin-top: 5px; }
+
+    section { padding: 100px 60px; text-align: center; }
+    section h2 { font-size: 2.5rem; color: #006064; margin-bottom: 40px; }
+
+    /* Process Section */
+    .process { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
+    .process-step { background: #ffffff; border-radius: 15px; padding: 30px 20px; width: 220px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: transform 0.3s ease; }
+    .process-step:hover { transform: translateY(-5px); }
+    .process-step h3 { font-size: 1.4rem; color: #006064; margin-bottom: 10px; }
+
+    /* Services Section */
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; }
+    .card { background: #ffffff; border-radius: 15px; padding: 30px; box-shadow: 0 5px 25px rgba(0,0,0,0.08); transition: all 0.3s ease; }
+    .card:hover { transform: scale(1.03); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+    .card img { width: 100%; border-radius: 10px; margin-bottom: 15px; }
+
+    /* Clients Section */
+    .clients { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 40px; margin-top: 20px; }
+    .clients img { width: 100px; filter: grayscale(100%); transition: filter 0.3s ease; }
+    .clients img:hover { filter: none; }
+
+    /* Footer */
+
+
+    .logistics-footer {
+      background: linear-gradient(180deg, #0d0d0d, #1a1a1a, #222831);
+      color: #ffffff;
+      padding: 50px 20px 20px;
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .footer-column {
+      flex: 1 1 300px;
+      margin: 15px;
+    }
+
+    .footer-column h3 {
+      font-size: 20px;
+      margin-bottom: 15px;
+      position: relative;
+    }
+
+    .footer-column h3::after {
+      content: "";
+      width: 50px;
+      height: 3px;
+      background: linear-gradient(to right, #ff6b6b, #ffd93d);
+      display: block;
+      margin-top: 5px;
+      border-radius: 3px;
+    }
+
+    .footer-column p, 
+    .footer-column a {
+      font-size: 14px;
+      color: #dcdcdc;
+      text-decoration: none;
+    }
+
+    .footer-column a:hover {
+      color: #ffb84d;
+    }
+
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-column ul li {
+      margin-bottom: 8px;
+    }
+
+    /* Social icons */
+    .social-icons a {
+      display: inline-block;
+      color: blueviolet !important;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 10px;
+      margin: 5px;
+      border-radius: 50%;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    .social-icons a:hover {
+      background: linear-gradient(45deg, #ff6b6b, #ffd93d);
+      color: black;
+      transform: scale(1.1);
+      box-shadow: 0 0 15px #ffb84d;
+    }
+
+    /* Footer bottom */
+    .footer-bottom {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 13px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 15px;
+      color: #a0a0a0;
+    }
+
+    /* Animation for fade-in effect */
+    .footer-column {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    .footer-column:nth-child(1) { animation-delay: 0.2s; }
+    .footer-column:nth-child(2) { animation-delay: 0.4s; }
+    .footer-column:nth-child(3) { animation-delay: 0.6s; }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }

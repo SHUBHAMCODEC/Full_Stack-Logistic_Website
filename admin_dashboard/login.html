@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Admin Login — Transport</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="login-body">
+  <div class="login-card">
+    <div class="brand">Loadify Admin</div>
+    <h2>Sign in to your dashboard</h2>
+
+    <form id="loginForm">
+      <label>Email</label>
+      <input id="email" type="email" required  style="border-color: aliceblue;"/>
+      <label>Password</label>
+      <input id="password" type="password" required style="border-color: aliceblue;" />
+      <button type="submit" class="btn">Sign In</button>
+      <p id="error" class="error"></p>
+    </form>
+    <small class="muted">Only authorized personnel allowed</small>
+  </div>
+
+  <script src="js/login.js"></script>
+</body>
+</html>
