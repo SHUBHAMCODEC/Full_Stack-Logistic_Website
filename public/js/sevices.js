@@ -40,7 +40,7 @@ form.addEventListener('submit', async (e) => {
   const rating = ratingInput ? ratingInput.id.replace("star", "") : "0";
 
   try {
-    const response = await fetch("http://localhost:5000/api/service", {
+    const response = await fetch("https://loadify-backend.onrender.com/api/service", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, company, rating, review })

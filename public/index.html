@@ -223,9 +223,11 @@
     
 <script src="js/main.js"></script>
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+
 <script>
 if (!sessionStorage.getItem("pageviewRecorded")) {
-  fetch("http://localhost:5000/api/pageview", {
+  fetch("https://loadify-backend.onrender.com/api/pageview", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ path: window.location.pathname }),
@@ -241,8 +243,5 @@ if (!sessionStorage.getItem("pageviewRecorded")) {
 
 
 </body>
-
-
-
 </html>
 

@@ -27,9 +27,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "../public")));
 app.use("/admin_dashboard", express.static(path.join(__dirname, "../admin_dashboard")));
 
-// ====== MongoDB Connection ======
+// ====== MongoDB Connection ====== 
 mongoose
-  .connect(process.env.MONGO_URI || "mongodb://localhost:27017/transportDB", {
+  .connect(process.env.MONGO_URI || "mongodb://localhost:27017/transportDB" ,  {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })

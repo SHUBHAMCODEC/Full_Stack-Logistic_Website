@@ -7,7 +7,7 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
   errEl.innerText = "";
 
   try {
-    const res = await fetch("http://localhost:5000/api/admin/login", {
+    const res = await fetch("https://loadify-backend.onrender.com/api/admin/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password })

@@ -72,7 +72,7 @@ let pageChart = new Chart(ctx, {
 
 async function fetchStats() {
   try {
-    const res = await fetch("http://localhost:5000/api/admin/stats", { headers });
+    const res = await fetch("https://loadify-backend.onrender.com/api/admin/stats", { headers });
     if (!res.ok) {
       if (res.status === 401 || res.status === 403) {
         localStorage.removeItem("adminToken");
@@ -110,8 +110,8 @@ async function fetchTables() {
   // contacts
   try {
     const [cRes, sRes] = await Promise.all([
-      fetch("http://localhost:5000/api/admin/contacts", { headers }),
-      fetch("http://localhost:5000/api/admin/services", { headers })
+      fetch("https://loadify-backend.onrender.com/api/admin/contacts", { headers }),
+      fetch("https://loadify-backend.onrender.com/api/admin/services", { headers })
     ]);
     if (!cRes.ok || !sRes.ok) {
       localStorage.removeItem("adminToken"); window.location.href = "./login.html";
@@ -120,7 +120,7 @@ async function fetchTables() {
     const [contacts, services] = await Promise.all([cRes.json(), sRes.json()]);
     contactsContainer.innerHTML = renderContactsTable(contacts);
     servicesContainer.innerHTML = renderServicesTable(services);
-    attachDeleteHandlers();
+    // attachDeleteHandlers();
   } catch (err) {
     console.error(err);
   }
@@ -146,55 +146,57 @@ function renderServicesTable(items) {
   return html;
 }
 
-// function attachDeleteHandlers() {
-//   document.querySelectorAll(".delete-btn").forEach(btn => {
-//     btn.addEventListener("click", async (e) => {
-//       const id = e.target.dataset.id;
-//       const type = e.target.dataset.type;
-//       if (!confirm("Delete this entry?")) return;
-//       try {
-//         const url = type === "contact" ? `/api/admin/contacts/${id}` : `/api/admin/services/${id}`;
-//         const res = await fetch(`http://localhost:5000${url}`, { method: "DELETE", headers });
-//         if (res.ok) { fetchTables(); fetchStats(); }
-//         else alert("Delete failed");
-//       } catch (err) { alert("Delete failed"); }
-//     });
-//   });
-// }
 
 function attachDeleteHandlers() {
   document.addEventListener("click", async (e) => {
     if (!e.target.classList.contains("delete-btn")) return;
 
-    const id = e.target.dataset.id;
-    const type = e.target.dataset.type;
+    const btn = e.target;
+    const id = btn.dataset.id;
+    const type = btn.dataset.type;
 
     if (!id || !type) return alert("Invalid entry");
     if (!confirm("Delete this entry?")) return;
 
     try {
+      btn.disabled = true;
+      btn.textContent = "Deleting...";
+
       const url = type === "contact"
         ? `/api/admin/contacts/${id}`
         : `/api/admin/services/${id}`;
 
-      const res = await fetch(`http://localhost:5000${url}`, {
+      const res = await fetch(`https://loadify-backend.onrender.com${url}`, {
         method: "DELETE",
         headers,
       });
 
       if (res.ok) {
+        // ✅ Instantly remove the row without full refresh
+        const row = btn.closest("tr");
+        if (row) row.remove();
+
+        // Optional: update the counters slightly without full fetch
+        if (type === "contact") {
+          contactsEl.innerText = Number(contactsEl.innerText) - 1;
+        } else {
+          servicesEl.innerText = Number(servicesEl.innerText) - 1;
+        }
+
         alert("✅ Entry deleted successfully");
-        fetchTables();
-        fetchStats();
       } else {
         alert("❌ Delete failed");
       }
     } catch (err) {
       console.error("Delete error:", err);
       alert("❌ Delete failed");
+    } finally {
+      btn.disabled = false;
+      btn.textContent = "Delete";
     }
   });
 }
+
 
 
 // function escapeHTML(s){ if(!s) return ""; return s.replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]); }
@@ -212,6 +214,7 @@ document.getElementById("rangeSelect").addEventListener("change", fetchStats);
 // initial load
 fetchStats();
 fetchTables();
+attachDeleteHandlers();
 
 // auto refresh every 6 seconds
-setInterval(()=>{ fetchStats(); fetchTables(); }, 12000);
+setInterval(()=>{ fetchStats(); fetchTables(); }, 6000);
