@@ -34,5 +34,4 @@ Frontend hosted on **Vercel** and backend API on **Render**, ensuring smooth and
 
 
 
-Developer: Shubham Sharma
-LinkedIn: Shubham Sharma
+
