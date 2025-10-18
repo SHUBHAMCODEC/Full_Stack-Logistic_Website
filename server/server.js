@@ -19,7 +19,19 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // ====== Middlewares ======
-app.use(cors());
+// app.use(cors());
+
+app.use(cors({
+  origin: [
+    "https://full-stack-logistic-website.vercel.app",      // 🌐 Your public website
+    "https://full-stack-logistic-website-fxdg.vercel.app", // 🧭 Admin dashboard
+    "http://127.0.0.1:3000",                              // 🧪 Local testing
+    "http://localhost:3000"                               // 🧪 Local testing
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
