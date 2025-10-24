@@ -20,14 +20,18 @@ body {
   box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
-.logo {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: #1b1b1b;
+.navbar img {
+  height: 72px;
+  width: 230px;
+  border-radius: 2rem;
 }
-.logo span {
-  color: #0c74e4;
+@media only screen and(max-width:600px){
+  .imgage{
+    height: 100px;
+    width: 10000px;
+  }
 }
+
 .nav-links {
   list-style: none;
   display: flex;
@@ -68,7 +72,7 @@ body {
 
   .nav-links {
     position: absolute;
-    top: 70px;
+    top: 90px;
     right: 0;
     background: #ffffff;
     width: 100%;

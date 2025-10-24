@@ -44,6 +44,12 @@ body {
     z-index: 2;
 }
 
+@media only screen and (max-width:600px){
+  .hero-text{
+    top: 53.8%;
+  }
+}
+
 .hero-text h1 {
     font-size: 3em;
     margin-bottom: 20px;
@@ -127,15 +133,49 @@ body {
     flex-direction: column;
     align-items: flex-start;
 }
+.logo-with-text img {
+  margin-top: -8%; /* pulls image upward */
+}
+
 
 /* Image styling */
 img {
+  height:71px ;
+  width: 225px;
+  display: block;
+  border-radius: 2rem;
     
-    height: 40px;
-    width: 40px;
-    border-radius: 32%;
-    border: 4px groove rgb(77, 204, 243);
 }
+
+@media only screen and (max-width: 600px){
+  .logo-with-text img {
+    margin-top: -4%; /* pulls image upward */
+  }
+
+  img{
+    height: 72px;
+    width: 210px;
+  }
+
+  img:hover {
+    transform: scale(1.2);
+    transition: transform 0.5s ease-in-out;
+  }
+
+}
+/* For Tablets (portrait and landscape) */
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+  .logo-with-text img {
+    margin-top: -3.8%; /* slightly reduced upward shift for better centering */
+  }
+
+  img {
+    height: 75px;
+    width: 220px;
+  }
+
+}
+
 
 img:hover {
     transform: scale(1.1);

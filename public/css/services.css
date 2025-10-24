@@ -14,8 +14,8 @@ body,html{
     height: 100%;
 }
 .header{
-    margin-top: 2%;
-    height: 50px;
+    margin-top: 1%;
+    height: 85px;
     width: 100%;   
     background-color: #E8DFCA;
     border-radius: 10px;
@@ -40,22 +40,57 @@ gap: 20px;
     
 }
 .logo img{
-    height: 40px;
-    width: 40px;
-    border-radius: 40%;
-    border: 5px outset #6D94C5;
+  height: 75px;
+  width: 225px;
+  display: block;
+  border-radius: 2em;
+}
+img:hover {
+    transform: scale(1.05);
+    transition: transform 0.5s ease-in-out;
+}
+@media only screen and (max-width:600px) {
+  .logo{
+    margin-top: 15px;
+    margin-left: 3.2%;    
+  }
+  .logo img{
+    height: 60px;
+    width: 195px;
+    display: block;
+    border-radius: 2em;
+  }
+  img:hover {
+    transform: scale(1.15);
+    transition: transform 0.5s ease-in-out;
+}
+}
 
+/* For Tablets (portrait and landscape) */
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+  .logo {
+    margin-top: 13px;
+    margin-left: 4%;
+  }
+
+  .logo img {
+    height: 65px;
+    width: 240px;
+    display: block;
+    border-radius: 2em;
+  }
+
+  img:hover {
+    transform: scale(1.05);
+    transition: transform 0.5s ease-in-out;
+  }
 }
-.logo h2{
-    color: #6D94C5;
-    border: 2px solid outset #6D94C5;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
+
 .attributes{
-    margin-left: 35%;
+    margin-right: 1%;
     margin-top: 5px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 20px;
     color:#6D94C5 ;
     letter-spacing: 1px;
@@ -90,7 +125,7 @@ gap: 20px;
     font-weight: 1500;
 }
 input {
-    margin-left: 8%;
+    margin-left: 0%;
     height: 32px;
     width: 195px;
     padding: 8px 15px;
